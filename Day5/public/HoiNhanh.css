@@ -1,0 +1,40 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    font-size: 36px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
+textarea{
+    display: block; 
+    margin-left: 40px;
+    width: 69%;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+p{
+    margin-left: 40px;
+}
+
+button{
+    margin-left: 40px;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    color: #ffffff;   
+    cursor: pointer;
+    padding: 6px 12px;
+    border: transparent;
+    border-radius: 4px;
+}
+
+
+
+
+
+

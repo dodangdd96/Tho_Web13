@@ -4,6 +4,7 @@
 }
 
 .menu span {    
+    /* padding:10px; co padding thi lam ntn */
     display: inline-block; 
     position: relative;
     color: #402E2A;
