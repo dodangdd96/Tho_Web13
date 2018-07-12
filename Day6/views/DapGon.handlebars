@@ -1,0 +1,20 @@
+<h3 class="text-question">{{ques.content}}</h3>
+<form action="">
+    <div id="choice">
+        <div>
+            <a href="/answer/{{ques.id}}/no"><button type="button" class="no" value="no">Sai / Không / Trái</button></a>
+        </div>
+
+        <div>
+            <a href="/answer/{{ques.id}}/yes"><button type="button" class="yes" value="yes">Đúng / Có / Phải</button></a>
+        </div>
+    </div>
+ 
+    <div id="optional">
+        <a href = "/question/{{ques.id}}"><button type="button">Kết quả vote</button></a>
+        <button type="button" value="cauhoikhac" onclick="window.location.reload()">Câu hỏi khác</button>
+        {{!-- <a href="/">
+            <button>Câu hỏi khác</button>
+        </a> --}}
+    </div>
+</form>
