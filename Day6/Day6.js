@@ -8,7 +8,7 @@ let app = express();
 
 app.engine("handlebars", hbs({ defaultLayout: "header" }));
 app.set("view engine", "handlebars");
-
+app.use(express.static("public"));
 // Object.size = function (obj) {                                           //dùng fs
 //     var size = 0, key;
 //     for (key in obj) {
