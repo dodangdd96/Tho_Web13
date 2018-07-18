@@ -1,0 +1,24 @@
+<form action="/question/add" class="HoiNhanh" method="POST">
+    <h1>Hãy hỏi cộng đồng một câu hỏi đúng/sai hoặc có/không</h1>
+    <textarea maxlength="200" rows="6" id="question" name="questionContent"></textarea>
+    <p>Còn <span id="remain">200</span>/200 ký tự</p>
+    {{!-- <textarea maxlength="200" rows="6" id="question" name="questionContent" onkeyup="countWord()"></textarea>
+    <p id="askbox">Còn 200/200 kí tự</p> --}}
+    <button type="submit" value="Gui">Gửi</button>
+</form>
+
+{{!-- <script type="text/javascript">          <-- không lấy dấu cách
+    function countWord() {
+        let input = document.getElementById("question");
+        console.log(input);
+        document.getElementById("askbox").innerHTML = "Còn " + (200 - input.value.length) + "/200 kí tự";
+    }
+</script> --}}
+
+<script>
+    let char = 200;
+
+    document.getElementById("question").addEventListener("input",function(){
+        document.getElementById("remain").innerText = char - document.getElementById("question").value.length;
+    });
+</script>
