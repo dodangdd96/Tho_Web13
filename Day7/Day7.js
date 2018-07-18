@@ -22,13 +22,19 @@ app.get('/', function (req, res) {
     // res.render("DapGon", {
     //     ques: questionRandom
     // });
-    QuestionModel.findOne({ undefined }, function (err, result) {
+
+    QuestionModel.countDocuments({}, function (err, count) {
         if (err) console.log(err)
-        else res.render("DapGon", {
-            ques: result
+        else {
+            var random = Math.floor(Math.random()*count);
+        }
+        QuestionModel.find({}, function (err, result) {
+            if (err) console.log(err)
+            else res.render("DapGon", {
+                ques: result[random]
+            });
         });
     });
-
 });
 
 app.get('/ask', function (req, res) {

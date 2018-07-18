@@ -21,7 +21,6 @@ router.get('/:questionID', function (req, res) {                    //dấu hai 
             ques: result[0],                    // <- this piece of shit is an object
             totalVote: result[0].yes + result[0].no
         });
-        console.log(result[0]);
     });
 });
 

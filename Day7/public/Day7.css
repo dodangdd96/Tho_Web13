@@ -27,7 +27,6 @@ body{
     color: #ffffff;
     background-color: #000000;
     cursor: pointer;
-    border-radius: 4px;
 }
 
 .DapGon .text-question{
@@ -36,6 +35,10 @@ body{
     margin-bottom: 30px;
     font-weight: 100;
     font-size: 40px;
+}
+
+.DapGon #choice button:hover{
+    cursor: pointer;
 }
 
 .DapGon #choice div{
@@ -120,9 +123,6 @@ body{
     cursor: pointer;
     background-color: #073c6b;
 }
-
-
-
 
 
 
