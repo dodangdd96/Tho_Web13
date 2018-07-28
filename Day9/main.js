@@ -1,4 +1,4 @@
-nextPageToken="";
+pageToken = "";
 
 function appendresult(item) {
     for (let i = 0; i < item.length; i++) {
@@ -25,27 +25,22 @@ $(document).ready(function () {
         event.preventDefault();
         $("#result-list").empty();
         $.ajax({
-            url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + $("#keyword").val() + '&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw&pagetoken=' + nextPageToken,  //link lấy API
+            url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + $("#keyword").val() + '&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw',  //link lấy API
             type: 'GET',
             success: function (body) {
                 appendresult(body.items);
-                nextPageToken = body.nextPageToken;
+                pageToken = body.nextPageToken;
             }
         });
     });
     $(window).scroll(function () {
-        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() > $(document).height() - $(window).height() - 10) {
             $.ajax({
-                url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + $("#keyword").val() + '&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw&pagetoken=' + nextPageToken,
+                url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + $("#keyword").val() + '&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw&pageToken=' + pageToken,  //link lấy API
                 type: 'GET',
                 success: function (body) {
-                    if (body.nextPageToken) {
-                        nextPageToken = body.nextPageToken;
-                    } else {
-                        nextPageToken = "";
-                        alert("No more result!");
-                    }
                     appendresult(body.items);
+                    pageToken = body.nextPageToken;
                 }
             });
         }

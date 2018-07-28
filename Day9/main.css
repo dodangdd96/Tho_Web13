@@ -23,8 +23,7 @@
 }
 
 .result{
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .result img{
@@ -42,5 +41,11 @@
 .result .description{
     font-size: 14px;
 }
+
+*{
+    margin-top: 0;
+    margin-bottom: 0;   
+}
+
 
 
