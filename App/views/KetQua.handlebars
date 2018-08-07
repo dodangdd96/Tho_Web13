@@ -1,0 +1,101 @@
+<form id="game">
+    <table id="tablescore">
+        <tr>
+            <th></th>
+            <th>{{game.player1.name}}</th>
+            <th>{{game.player2.name}}</th>
+            <th>{{game.player3.name}}</th>
+            <th>{{game.player4.name}}</th>
+        </tr>
+        <tr class="SumScore">
+            <th>Sum of Score</th>
+            <th>{{game.player1.total}}</th>
+            <th>{{game.player2.total}}</th>
+            <th>{{game.player3.total}}</th>
+            <th>{{game.player4.total}}</th>
+        </tr>
+    </table>
+    <div class="button">
+        <button id="addround" type="button">Add Round</button>
+        <button id="save" type="submit">Save Game</button>
+    </div>
+
+    <p id="gameID">{{game.id}}</p>
+</form>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            url: '/game/' + $("#gameID").text() + '/load',
+            type: 'GET',
+            success: function (body) {
+                loadround(body);
+            }
+        });
+    });
+
+    $("#addround").on("click", function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: '/game/' + $("#gameID").text() + '/load',
+            type: 'GET',
+            success: function (body) {
+                addround(body);
+            }
+        });
+    });
+
+    $("#save").on("click", function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: "/game/" + $("#gameID").text() + "/save",
+            type: "POST",
+            data: {
+                score1: $("#scoreP1").val(),
+                score2: $("#scoreP2").val(),
+                score3: $("#scoreP3").val(),
+                score4: $("#scoreP4").val()
+            },
+            success: function (body) {
+                if (body.success) {
+                    window.location.href = "/game/" + body.gameID;
+                } else {
+                    console.log(body);
+                    alert("BUG success!");
+                }
+            },
+            error: function (body) {
+                console.log(body);
+                alert("BUG error!");
+            }
+        });
+    });
+
+    function loadround(game) {
+        for (let i = 1; i < game.player1.point.length; i++) {
+            $("#tablescore").append(`
+                <tr>
+                    <th>Round ${i}</th>
+                    <th>${game.player1.point[i]}</th>
+                    <th>${game.player2.point[i]}</th>
+                    <th>${game.player3.point[i]}</th>
+                    <th>${game.player4.point[i]}</th>                
+                </tr>
+                `);
+        }
+    }
+
+    function addround(game) {
+        $("#tablescore").append(`
+            <tr>
+                <th>Round ${game.player1.point.length}</th>
+                <th><input type="number" id="scoreP1" name="score1" value=0></th>
+                <th><input type="number" id="scoreP2" name="score2" value=0></th>
+                <th><input type="number" id="scoreP3" name="score3" value=0></th>
+                <th><input type="number" id="scoreP4" name="score4" value=0></th>
+            </tr>
+        `);
+    }
+
+</script>

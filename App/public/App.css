@@ -1,0 +1,85 @@
+*{
+    background-color: #FBFEF9;
+}
+
+.nav-bar {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.nav-bar h1{
+    margin-bottom: 0px;
+}
+
+.DangKi {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin: auto;
+    text-align: center;
+}
+
+textarea {
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 80%;
+    height: 30px;
+    border: solid 1px violet;
+    padding-left: 5px;
+    padding-top: 5px;
+    margin-top: 10px;
+    margin-bottom:5px;
+    color: #333333;
+    position: relative;
+}
+
+.button{
+    text-align: center;
+}
+
+button {
+    border-radius: 4px;
+    margin: auto;
+    color: #ffffff;
+    background-color: crimson;
+    border:  solid 1px crimson;
+    height: 30px;
+    margin-top:20px;
+}
+
+#game{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    width:100%;
+    text-align: left;
+    border-bottom: groove 1px #ffc0cb;
+}
+
+th{
+    height: 40px;
+}
+
+
+.SumScore th{
+    background-color: rgb(223, 72, 72);
+    color: #ffffff;
+    width: 400px;
+}
+
+#tablescore input{
+    border: solid 1px violet;
+    border-radius: 4px;
+    height: 30px;
+    width: 100px;
+    margin-bottom:0;
+    padding: 5px;   
+}
+
+#gameID{
+    display: none;
+}

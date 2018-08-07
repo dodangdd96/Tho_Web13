@@ -1,0 +1,38 @@
+<form id="newgame">
+    <div class="DangKi">
+        <textarea placeholder="Player 1..." id="1" name="name1"></textarea>
+        <textarea placeholder="Player 2..." id="2" name="name2"></textarea>
+        <textarea placeholder="Player 3..." id="3" name="name3"></textarea>
+        <textarea placeholder="Player 4..." id="4" name="name4"></textarea>
+    </div>
+    <div class="button">
+        <button type="submit">Create New Game</button>
+    </div>
+</form>
+
+<script>
+    $("#newgame").on("submit", function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: "/api/create",
+            type: "POST",
+            data: {
+                name1: $("#1").val(),
+                name2: $("#2").val(),
+                name3: $("#3").val(),
+                name4: $("#4").val()
+            },
+            success: function (body) {
+                if (body.success) {
+                    window.location.href = "/game/" + body.gameID;
+                } else {
+                    alert("BUG!");
+                }
+            },
+            error: function (body) {
+                console.log(body);
+                alert("BUG!");
+            }
+        });
+    });
+</script>
